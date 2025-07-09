@@ -1,0 +1,56 @@
+import React, { useState } from 'react';
+
+export default function ColorPicker() {
+const [color,setColor]=useState('#FFFFFF');
+const [text,setText]=useState('An Example Text');
+const [isbold,setBold]=useState('false');
+function handleColorChange(event){
+    setColor(event.target.value);
+}
+function handleTextChange(event){
+    setText(event.target.value);
+}
+function handleBoldChange(event){
+    setBold(!isbold);
+}
+
+return (
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg flex flex-col gap-4 items-center">
+        <h1 className="text-2xl font-bold text-indigo-600 mb-2">Tumblr Tint Text</h1>
+        <p 
+            className="w-full text-center py-2 rounded-md font-mono mb-2"
+            style={{background: color, color: "#222"}}
+        >
+            Selected Color: {color}
+        </p>
+        <input
+            type='color'
+            value={color}
+            onChange={handleColorChange}
+            className="w-12 h-12 border-2 border-indigo-300 rounded-full cursor-pointer mb-2 custom-color"
+        />
+        <textarea
+            value={text}
+            onChange={handleTextChange}
+            placeholder='Type your text here...'
+            rows='4'
+            className="w-full p-2 border border-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-300 resize-none"
+        />
+        <button
+            onClick={handleBoldChange}
+            >B</button>
+        <div className="w-full">
+            <label className="block text-sm text-gray-500 mb-1">Copy this HTML for Tumblr:</label>
+            <pre className="bg-gray-100 rounded-md p-3 text-sm overflow-x-auto border border-gray-200">{`<span style="color: ${color}; font-weight: ${isbold ? "normal" : "bold"}">${text}</span>`}</pre>
+        </div>
+        <div className="w-full text-center mt-2">
+            <span 
+                className={`inline-block px-4 py-2 rounded-md ${isbold ? '' : 'font-bold'}`}
+                style={{color: color, background: "#f3f4f6", border: `1px solid ${color}`, }}
+            >   
+                Preview: {text || "Your text here"}
+            </span>
+        </div>
+        </div>
+)
+}

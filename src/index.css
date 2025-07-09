@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+.custom-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 50%;
+}
+
+.custom-color::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.custom-color::-moz-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.custom-color::-moz-focus-inner {
+    border: 0;
+}
